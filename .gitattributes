@@ -1,0 +1,12 @@
+# Normalise line endings so Windows and the Linux CI runner agree.
+* text=auto eol=lf
+
+# Binary assets must never be touched.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary
+*.woff  binary
+*.woff2 binary
+*.pdf binary
