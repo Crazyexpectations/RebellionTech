@@ -24,6 +24,8 @@ interface SectionProps {
   style?: CSSProperties;
   /** Constrain inner content to this width instead of the 1220px default. */
   narrow?: boolean;
+  /** Short label for the on-page section rail. Requires `id`. */
+  rail?: string;
 }
 
 /** Standard page section: consistent rhythm, background layers and max-width. */
@@ -38,6 +40,7 @@ export default function Section({
   className = '',
   style,
   narrow = false,
+  rail,
 }: SectionProps) {
   const classes = [
     'rb-sec',
@@ -53,6 +56,7 @@ export default function Section({
   return (
     <section
       id={id}
+      data-rail={rail}
       className={classes}
       style={{ background: BG[bg], position: 'relative', overflow: 'hidden', ...style }}
     >

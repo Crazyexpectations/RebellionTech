@@ -29,7 +29,7 @@ const WONT = [
 
 export default function Boundaries() {
   return (
-    <Section bg="base">
+    <Section bg="base" id="boundaries" rail="Boundaries">
       <SectionHead
         badge="Boundaries"
         title={<>Things we <span className="rb-gt">will not do</span></>}

@@ -8,6 +8,31 @@ import { useScrollY } from '@/lib/hooks';
 import { LogoWord } from './Logo';
 import Magnetic from '@/components/fx/Magnetic';
 
+/** Small ⌘K affordance. Renders a neutral label until we know the platform,
+ *  so server and client markup always agree. */
+function PaletteButton() {
+  const [mod, setMod] = useState<string | null>(null);
+
+  useEffect(() => {
+    setMod(/Mac|iPhone|iPad/.test(navigator.platform ?? navigator.userAgent) ? '⌘' : 'Ctrl');
+  }, []);
+
+  return (
+    <button
+      className="nv-palette"
+      onClick={() => window.dispatchEvent(new Event('rb:palette'))}
+      aria-label="Open command palette"
+      title="Search and jump to anything"
+    >
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <circle cx="11" cy="11" r="7" />
+        <path d="m21 21-4.3-4.3" strokeLinecap="round" />
+      </svg>
+      <kbd>{mod === 'Ctrl' ? 'Ctrl K' : `${mod ?? '⌘'}K`}</kbd>
+    </button>
+  );
+}
+
 export default function Navigation() {
   const [open, setOpen] = useState(false);
   const scrolled = useScrollY(24);
@@ -41,11 +66,25 @@ export default function Navigation() {
           __html: `
           .nv-desk { display: none; }
           .nv-cta  { display: none; }
+          .nv-palette { display: none; }
           .nv-burger { display: inline-flex; }
           @media (min-width: 900px) {
             .nv-desk { display: flex; align-items: center; gap: 2px; }
             .nv-cta  { display: inline-flex; }
+            .nv-palette { display: inline-flex; }
             .nv-burger { display: none; }
+          }
+          .nv-palette {
+            align-items: center; gap: 7px; cursor: pointer;
+            background: rgba(255,255,255,.03); border: 1px solid var(--b2);
+            border-radius: 999px; padding: 6px 11px; color: var(--t3);
+            transition: border-color .2s, color .2s, background .2s;
+          }
+          .nv-palette:hover {
+            border-color: var(--em-a25); color: var(--em3); background: var(--em-a08);
+          }
+          .nv-palette kbd {
+            font-family: var(--fm); font-size: 0.64rem; letter-spacing: 0.04em;
           }
           .nv-link {
             position: relative; padding: 7px 14px; border-radius: 999px;
@@ -117,6 +156,8 @@ export default function Navigation() {
               </Link>
             ))}
           </nav>
+
+          <PaletteButton />
 
           {/* The class lives on this wrapper, not on Magnetic — Magnetic sets
               display inline, which would beat `display: none` from the class

@@ -14,9 +14,14 @@ export const SITE = {
     'RebellionTech designs, builds and operates custom AI systems — not API wrappers. Research-grade engineering for organisations that need intelligence they actually own.',
 
   // ── Contact ──────────────────────────────────────────────────────
-  // TODO(owner): point this at the mailbox you actually read.
-  email: 'contact@rebelliontech.in',
+  // Every mail link, the audit form and the structured data read from here.
+  email: 'aurindesai@gmail.com',
   location: 'India — working worldwide',
+
+  founder: {
+    name: 'Aurin Desai',
+    role: 'Founder & Chief Executive Officer',
+  },
 
   social: {
     github: 'https://github.com/Crazyexpectations',

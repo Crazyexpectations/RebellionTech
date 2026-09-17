@@ -25,7 +25,7 @@ export default function SystemsPage() {
         lead="This page is the technical argument. If you want to know exactly what you would be paying for, and exactly where most AI projects fall apart, it is all here."
         facts={[
           { k: '6', v: 'Layers owned' },
-          { k: '3', v: 'Core pipelines' },
+          { k: '4', v: 'Core pipelines' },
           { k: '0', v: 'Black boxes' },
         ]}
       />

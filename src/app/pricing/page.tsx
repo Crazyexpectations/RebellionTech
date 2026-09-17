@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import PageHero from '@/components/layout/PageHero';
 import PricingModels from '@/components/pricing/PricingModels';
+import Estimator from '@/components/pricing/Estimator';
 import TheRule from '@/components/pricing/TheRule';
 import { ComplexityTiers, CostFactors } from '@/components/pricing/TiersAndFactors';
 import ProcessSection from '@/components/home/ProcessSection';
@@ -33,6 +34,7 @@ export default function PricingPage() {
       />
 
       <PricingModels />
+      <Estimator />
       <TheRule />
       <ComplexityTiers />
       <CostFactors />

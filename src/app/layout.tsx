@@ -11,6 +11,9 @@ import CustomCursor from '@/components/fx/CustomCursor';
 import SpotlightCards from '@/components/fx/SpotlightCards';
 import ClickFX from '@/components/fx/ClickFX';
 import SmoothScroll from '@/components/fx/SmoothScroll';
+import CommandPalette from '@/components/fx/CommandPalette';
+import SectionRail from '@/components/fx/SectionRail';
+import RouteTransition from '@/components/fx/RouteTransition';
 
 /* Fonts are downloaded at build time and served from our own origin, so
    there is no render-blocking request to a third-party font CDN. */
@@ -63,11 +66,20 @@ export const metadata: Metadata = {
     description: SITE.shortPitch,
     url: SITE.url,
     locale: 'en_IN',
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: `${SITE.name} — ${SITE.tagline}`,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${SITE.name} — ${SITE.tagline}`,
     description: SITE.shortPitch,
+    images: ['/og-image.png'],
   },
   robots: {
     index: true,
@@ -97,10 +109,11 @@ const JSON_LD = {
   description: SITE.shortPitch,
   email: SITE.email,
   slogan: SITE.tagline,
-  founder: [
-    { '@type': 'Person', name: 'Garima Kalra' },
-    { '@type': 'Person', name: 'Aurin Desai' },
-  ],
+  founder: {
+    '@type': 'Person',
+    name: SITE.founder.name,
+    jobTitle: SITE.founder.role,
+  },
   areaServed: 'Worldwide',
   knowsAbout: [
     'Custom neural networks',
@@ -127,9 +140,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CustomCursor />
         <SpotlightCards />
         <ClickFX />
+        <CommandPalette />
 
         <Navigation />
-        <main id="main">{children}</main>
+        <SectionRail />
+        <main id="main">
+          <RouteTransition>{children}</RouteTransition>
+        </main>
         <Footer />
 
         <script

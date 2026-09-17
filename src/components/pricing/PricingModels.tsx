@@ -5,7 +5,7 @@ import { accentTint } from '@/lib/site';
 
 export default function PricingModels() {
   return (
-    <Section bg="alt" mesh>
+    <Section bg="alt" mesh id="models" rail="Engagement models">
       <SectionHead
         badge="Engagement models"
         title={<>Four ways to <span className="rb-gt">work with us</span></>}

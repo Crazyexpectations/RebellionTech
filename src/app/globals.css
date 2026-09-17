@@ -823,6 +823,18 @@ html.rb-cursor-on * {
   animation: rbRipple 0.62s var(--ease) forwards;
 }
 
+/* ── Route transition ── */
+@keyframes rbRouteIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+.rb-route {
+  animation: rbRouteIn 0.45s var(--ease) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rb-route { animation: none; }
+}
+
 /* ── Marquee ── */
 .rb-marquee {
   display: flex;

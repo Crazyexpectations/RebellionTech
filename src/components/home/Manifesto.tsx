@@ -21,7 +21,7 @@ const CLAIMS = [
 /** The positioning argument, stated plainly. */
 export default function Manifesto() {
   return (
-    <Section bg="base" hex topGlow>
+    <Section bg="base" hex topGlow id="why" rail="Why we exist">
       <div className="rb-reveal" style={{ maxWidth: 860, marginBottom: '3.5rem' }}>
         <span className="rb-badge" style={{ marginBottom: '1.2rem' }}>Why we exist</span>
         <h2 style={{ marginBottom: '1.25rem' }}>

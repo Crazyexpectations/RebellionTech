@@ -6,7 +6,7 @@ import { INK } from '@/components/diagrams/primitives';
 
 export default function ProcessSection() {
   return (
-    <Section bg="alt" mesh>
+    <Section bg="alt" mesh id="process" rail="Process">
       <SectionHead
         badge="How an engagement runs"
         badgeTone="brass"

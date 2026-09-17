@@ -77,7 +77,7 @@ function Branch({ data, side }: { data: RuleBranch; side: 'left' | 'right' }) {
 
 export default function TheRule() {
   return (
-    <Section bg="base" hex>
+    <Section bg="base" hex id="rule" rail="The rule">
       <SectionHead
         badge="Decision framework"
         badgeTone="brass"

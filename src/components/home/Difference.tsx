@@ -35,7 +35,7 @@ const ROWS = [
 
 export default function Difference() {
   return (
-    <Section bg="alt">
+    <Section bg="alt" id="difference" rail="The difference">
       <SectionHead
         badge="The difference"
         badgeTone="brass"

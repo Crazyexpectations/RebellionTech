@@ -7,7 +7,7 @@ import CTASection from '@/components/home/CTASection';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'RebellionTech is a two-person AI engineering firm founded by Garima Kalra and Aurin Desai. How we think, where we draw lines, and who you actually work with.',
+    'RebellionTech is an independent AI engineering practice founded and run by Aurin Desai. How the work is approached, where the lines are drawn, and who you actually deal with.',
 };
 
 export default function AboutPage() {
@@ -21,10 +21,10 @@ export default function AboutPage() {
             <span className="rb-gt">right than busy</span>
           </>
         }
-        lead="RebellionTech is deliberately small. Two engineers, a limited number of concurrent engagements, and no layer of account management between you and the people building your system."
+        lead="RebellionTech is deliberately small. One engineer, a limited number of concurrent engagements, and nobody standing between you and the person building your system."
         facts={[
-          { k: '2', v: 'Founders' },
           { k: 'Direct', v: 'No account managers' },
+          { k: '1:1', v: 'You talk to the builder' },
           { k: 'India', v: 'Working worldwide' },
         ]}
       />

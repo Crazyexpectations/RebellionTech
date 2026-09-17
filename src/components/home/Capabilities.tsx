@@ -6,7 +6,7 @@ import { accentTint } from '@/lib/site';
 
 export default function Capabilities() {
   return (
-    <Section bg="alt" mesh>
+    <Section bg="alt" mesh id="capabilities" rail="Capabilities">
       <SectionHead
         badge="Core capabilities"
         title={<>Six things we do <span className="rb-gt">properly</span></>}

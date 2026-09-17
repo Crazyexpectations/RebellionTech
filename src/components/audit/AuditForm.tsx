@@ -97,11 +97,23 @@ export default function AuditForm() {
 
   const mailto = `mailto:${SITE.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
+  // Browser-based fallback for visitors with no desktop mail client bound to
+  // mailto: — which is most people on a work laptop.
+  const gmailCompose =
+    `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(SITE.email)}` +
+    `&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     setTouched(true);
     if (!valid) return;
     window.location.href = mailto;
+  };
+
+  const openGmail = () => {
+    setTouched(true);
+    if (!valid) return;
+    window.open(gmailCompose, '_blank', 'noopener,noreferrer');
   };
 
   const copy = async () => {
@@ -229,15 +241,23 @@ export default function AuditForm() {
           </svg>
         </button>
 
+        <button type="button" onClick={openGmail} className="rb-btn rb-btn-ghost">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 6-10 7L2 6" />
+          </svg>
+          Open in Gmail
+        </button>
+
         <button type="button" onClick={copy} className="rb-btn rb-btn-ghost">
-          {copied ? 'Copied to clipboard' : 'Copy as text instead'}
+          {copied ? 'Copied ✓' : 'Copy as text'}
         </button>
       </div>
 
       <p style={{ fontFamily: 'var(--fm)', fontSize: '0.7rem', color: 'var(--t3)', marginTop: '1.25rem', lineHeight: 1.7 }}>
-        This opens your mail app with everything filled in — nothing is sent from this page and nothing is
-        stored here. If no mail app opens, use the copy button and send it to{' '}
-        <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+        Three ways out, all of them going to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>. Nothing is
+        submitted from this page and nothing is stored here — the first button hands the filled-in message to
+        your mail app, the second opens it in Gmail, and the third copies it so you can paste it anywhere.
       </p>
     </form>
   );

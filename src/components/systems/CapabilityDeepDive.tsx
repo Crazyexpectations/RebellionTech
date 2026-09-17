@@ -5,7 +5,7 @@ import { accentTint } from '@/lib/site';
 /** Each capability expanded: what it means and how we actually do it. */
 export default function CapabilityDeepDive() {
   return (
-    <Section bg="base" hex>
+    <Section bg="base" hex id="layers" rail="The six layers">
       <SectionHead
         badge="Layer by layer"
         title={<>What each layer <span className="rb-gt">actually involves</span></>}

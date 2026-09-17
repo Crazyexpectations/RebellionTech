@@ -33,7 +33,7 @@ const LAYERS = [
 
 export default function HowWeBuild() {
   return (
-    <Section bg="base" id="architecture">
+    <Section bg="base" id="architecture" rail="Architecture">
       <SectionHead
         badge="The shape of the work"
         badgeTone="cyan"

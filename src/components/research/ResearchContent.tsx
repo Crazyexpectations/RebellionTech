@@ -57,7 +57,7 @@ const AREAS = [
 
 export function ResearchAreas() {
   return (
-    <Section bg="base" hex>
+    <Section bg="base" hex id="questions" rail="Open questions">
       <SectionHead
         badge="Open questions"
         title={<>What we are <span className="rb-gt">still working out</span></>}
@@ -164,7 +164,7 @@ const SELECTION = [
 
 export function ModelSelection() {
   return (
-    <Section bg="alt" mesh>
+    <Section bg="alt" mesh id="strategy" rail="Model strategy">
       <SectionHead
         badge="Model strategy"
         badgeTone="cyan"
@@ -259,7 +259,7 @@ const LIMITS = [
 
 export function Limits() {
   return (
-    <Section bg="base">
+    <Section bg="base" id="limits" rail="Limits">
       <SectionHead
         badge="Limits"
         title={<>What this technology <span className="rb-gt">cannot do</span></>}

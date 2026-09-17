@@ -50,7 +50,7 @@ const ETHICS = [
 export default function Philosophy() {
   return (
     <>
-      <Section bg="base" hex>
+      <Section bg="base" hex id="positions" rail="Positions">
         <SectionHead
           badge="How we think"
           title={<>Four positions we <span className="rb-gt">actually hold</span></>}
@@ -108,7 +108,7 @@ export default function Philosophy() {
         </div>
       </Section>
 
-      <Section bg="alt">
+      <Section bg="alt" id="ethics" rail="Ethics">
         <SectionHead
           badge="Ethics"
           badgeTone="brass"

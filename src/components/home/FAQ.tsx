@@ -130,7 +130,7 @@ function Item({ item, index }: { item: (typeof ITEMS)[number]; index: number }) 
 
 export default function FAQ() {
   return (
-    <Section bg="base" hex>
+    <Section bg="base" hex id="faq" rail="Questions">
       <SectionHead
         badge="Straight answers"
         title={<>Questions you should <span className="rb-gt">be asking</span></>}

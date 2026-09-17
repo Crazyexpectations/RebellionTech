@@ -81,7 +81,7 @@ function Metric({ item, index }: { item: (typeof NUMBERS)[number]; index: number
 
 export default function Principles() {
   return (
-    <Section bg="base">
+    <Section bg="base" id="commitments" rail="Commitments">
       <div
         aria-hidden
         className="rb-glow-blob"

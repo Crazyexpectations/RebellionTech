@@ -3,6 +3,7 @@ import DiagramFrame from '@/components/diagrams/DiagramFrame';
 import RetrievalPipeline from '@/components/diagrams/RetrievalPipeline';
 import AgentOrchestration from '@/components/diagrams/AgentOrchestration';
 import TrainingPipeline from '@/components/diagrams/TrainingPipeline';
+import EvaluationGate from '@/components/diagrams/EvaluationGate';
 import { INK } from '@/components/diagrams/primitives';
 
 interface Note {
@@ -32,7 +33,7 @@ export default function PipelineShowcase() {
   return (
     <>
       {/* ── Retrieval ────────────────────────────────────────────── */}
-      <Section bg="alt" mesh id="retrieval">
+      <Section bg="alt" mesh id="retrieval" rail="Retrieval">
         <SectionHead
           badge="Retrieval"
           badgeTone="cyan"
@@ -79,7 +80,7 @@ export default function PipelineShowcase() {
       </Section>
 
       {/* ── Agents ───────────────────────────────────────────────── */}
-      <Section bg="base" id="agents">
+      <Section bg="base" id="agents" rail="Orchestration">
         <SectionHead
           badge="Orchestration"
           title={<>Multi-agent systems that stay <span className="rb-gt">debuggable</span></>}
@@ -125,7 +126,7 @@ export default function PipelineShowcase() {
       </Section>
 
       {/* ── Training ─────────────────────────────────────────────── */}
-      <Section bg="alt" hex id="training">
+      <Section bg="alt" hex id="training" rail="Training">
         <SectionHead
           badge="Build loop"
           badgeTone="brass"
@@ -165,6 +166,52 @@ export default function PipelineShowcase() {
             {
               t: 'Rollback is rehearsed',
               d: 'Reverting to the previous model version is a single command, and we exercise it on a schedule. A rollback path that has never been run is a hypothesis.',
+              accent: INK.brass,
+            },
+          ]}
+        />
+      </Section>
+
+      {/* ── Evaluation gate ──────────────────────────────────────── */}
+      <Section bg="base" id="evaluation" rail="Guardrails">
+        <SectionHead
+          badge="Guardrails"
+          title={<>Nothing ships on the model&rsquo;s <span className="rb-gt">say-so</span></>}
+          lead="Four independent checks run on every candidate output. Any one of them can veto a release, and the veto carries a reason rather than a silent retry."
+          maxWidth={700}
+        />
+
+        <div className="rb-reveal">
+          <DiagramFrame
+            title="Evaluation and release gate"
+            minWidth={700}
+            legend={[
+              { label: 'Groundedness', color: INK.signal },
+              { label: 'Policy', color: INK.ember },
+              { label: 'Quality', color: INK.emberLight },
+              { label: 'Safety', color: INK.brass },
+            ]}
+            caption="The checks run in parallel, so adding one costs latency but not architecture. The dashed return path matters as much as the gate itself: a blocked output goes back with its failure reason attached, which is what makes the next attempt better rather than merely different."
+          >
+            <EvaluationGate />
+          </DiagramFrame>
+        </div>
+
+        <Notes
+          items={[
+            {
+              t: 'Refusal is a passing grade',
+              d: 'An output that declines to answer because the evidence is not there has behaved correctly. We score refusal quality deliberately, because a system that never abstains is a system that confabulates.',
+              accent: INK.signal,
+            },
+            {
+              t: 'Checks are independent',
+              d: 'No check can be satisfied by the component it is checking. Groundedness is verified against retrieved spans, not against the model asserting that it was careful.',
+              accent: INK.emberLight,
+            },
+            {
+              t: 'Vetoes are logged',
+              d: 'Every block is recorded with its reason and inputs. That log becomes the adversarial set for the next training round, so failures compound into improvement.',
               accent: INK.brass,
             },
           ]}

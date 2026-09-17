@@ -4,7 +4,7 @@ import { accentTint } from '@/lib/site';
 
 export function ComplexityTiers() {
   return (
-    <Section bg="alt" mesh>
+    <Section bg="alt" mesh id="tiers" rail="Complexity tiers">
       <SectionHead
         badge="Complexity"
         badgeTone="cyan"
@@ -130,7 +130,7 @@ export function ComplexityTiers() {
 
 export function CostFactors() {
   return (
-    <Section bg="base">
+    <Section bg="base" id="factors" rail="Cost factors">
       <SectionHead
         badge="Cost factors"
         title={<>What actually <span className="rb-gt">moves the number</span></>}
